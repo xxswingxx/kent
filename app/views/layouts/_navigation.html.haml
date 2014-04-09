@@ -1,0 +1,31 @@
+#nav-bar
+  .row
+    %nav.top-bar{"data-topbar" => ""}
+      %ul.title-area
+        %li.name
+          %h1= link_to('Kent', root_path, class: 'app-logo')
+        -  if current_user
+          %li.toggle-topbar.menu-icon
+            %a{href: "#"}
+      -  if current_user
+        %section.top-bar-section
+          / Right Nav Section
+          %ul.right          
+            %li.has-dropdown
+              = link_to( "Hi, User", '#')
+              %ul.dropdown
+                %li= link_to("Profile", edit_user_registration_path)
+                %li= link_to("Logout", destroy_user_session_path, :method => :delete) 
+            %li.has-dropdown
+              = link_to 'Actions', '#'
+              %ul.dropdown
+                %li= link_to 'My comics'
+                %li= link_to 'Create new Comic', new_comic_path
+                - if params[:action] == 'show' && params[:controller] == 'comics'
+                  %li= link_to 'Upload chapters', new_comic_chapter_path(@comic)
+      -  else
+        %section.top-bar-section
+          / Right Nav Section
+          %ul.right          
+            %li= link_to 'Sign in', new_user_session_path
+            %li= link_to 'Sign up', new_user_registration_path 

@@ -1,0 +1,20 @@
+.row
+  .large-8.columns
+    = image_tag( @comic.thumbnail.present? ? @comic.thumbnail : '/assets/placeholder.jpg')
+  
+  .large-4.columns
+    %p 
+      %strong Title:
+      = @comic.title
+    %p 
+      %strong Genre:
+      = @comic.genre
+    %p 
+      %strong State:
+      = @comic.state
+    %p 
+      %strong Description:
+      = @comic.description
+    = link_to 'Edit', edit_comic_path(@comic)
+    |
+    \#{link_to 'Back', comics_path}

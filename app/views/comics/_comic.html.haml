@@ -1,0 +1,4 @@
+
+%li.comic-thumbnail
+  = link_to(image_tag(comic.thumbnail.thumb.url || '/assets/placeholder-thumbnail.png'), comic)
+  %p= comic.title

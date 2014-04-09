@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Cover:
+  = @chapter.cover
+%p
+  %b Title:
+  = @chapter.title
+%p
+  %b Issue:
+  = @chapter.issue
+
+= link_to 'Edit', edit_chapter_path(@chapter)
+\|
+= link_to 'Back', chapters_path

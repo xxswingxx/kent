@@ -1,0 +1,21 @@
+= simple_form_for(@comic) do |f|
+  - if @comic.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@comic.errors.count, "error")
+        prohibited this comic from being saved:
+      %ul
+        - @comic.errors.full_messages.each do |msg|
+          %li= msg
+
+  .row
+    .medium-4.columns= image_tag( @comic.thumbnail.present? ? @comic.thumbnail : '/assets/placeholder.jpg')
+    .medium-8.columns
+      = f.input :title
+      = f.input :genre
+      = f.input :author
+      = f.input :state, collection: [:open, :closed, :hiatus, :ongoing], include_blank: false
+      = f.input :thumbnail, as: :file
+
+      = f.input :description
+      = f.submit class: 'button small'

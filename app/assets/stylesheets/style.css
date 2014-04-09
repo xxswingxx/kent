@@ -1,0 +1,7 @@
+li.comic-thumbnail a{
+	&:link {text-decoration: none;}
+}
+
+li.comic-thumbnail img {
+	box-shadow: 1px 1px 2px #777;
+}

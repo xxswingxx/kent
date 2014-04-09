@@ -1,0 +1,18 @@
+%h1 Listing comics
+
+.row
+  .large-5.columns.secondary-nav 
+    %table.responsive
+      %thead
+        %tr
+          %th Title
+          %th Author
+          %th Chapters
+          %th Score
+      %tbody
+      = render partial: 'most_popular', collection: @comics, as: 'comic'
+
+  .large-7.columns
+    %ul.clearing-thumbs.small-block-grid-3= render partial: 'comic', collection: @comics
+
+= link_to 'New Comic', new_comic_path
