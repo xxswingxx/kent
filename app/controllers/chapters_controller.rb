@@ -25,8 +25,13 @@ class ChaptersController < ApplicationController
   # POST /chapters.json
   def create
     chapter = Chapter.new chapter_params
-    ProcessPagesJob.new.async.perform(current_user, chapter)
-    redirect_to comic_path(params[:comic_id]), notice: 'The chapter is being processed. Please wait a couple of minutes.'
+    if chapter.save
+      flash[:notice] = 'The chapter is being processed. Please wait a couple of minutes.'
+      ProcessPagesJob.new.async.perform(current_user, chapter)
+    else
+      flash[:alert] = 'Chapter not processable'
+    end
+    redirect_to comic_path(params[:comic_id])
   end
 
   # PATCH/PUT /chapters/1

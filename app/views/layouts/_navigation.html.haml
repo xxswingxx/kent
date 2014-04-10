@@ -23,6 +23,7 @@
                 %li= link_to 'Create new Comic', new_comic_path
                 - if params[:action] == 'show' && params[:controller] == 'comics'
                   %li= link_to 'Upload chapters', new_comic_chapter_path(@comic)
+
       -  else
         %section.top-bar-section
           / Right Nav Section

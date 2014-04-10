@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20140409194522) do
     t.string  "cover"
     t.string  "title"
     t.string  "issue"
+    t.boolean "locked"
+    t.float   "score"
   end
 
   add_index "chapters", ["comic_id"], name: "index_chapters_on_comic_id", using: :btree

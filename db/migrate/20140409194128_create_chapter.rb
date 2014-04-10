@@ -5,6 +5,8 @@ class CreateChapter < ActiveRecord::Migration
     	t.string :cover
     	t.string :title
     	t.string :issue
+    	t.boolean :locked
+    	t.float :score
     end
     add_index :chapters, :comic_id
   end

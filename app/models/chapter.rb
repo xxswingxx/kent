@@ -3,4 +3,6 @@ class Chapter < ActiveRecord::Base
   has_many :pages, order: 'number ASC, id ASC'
 
   attr_accessor :file
+
+  scope :available, where(locked: false)
 end
