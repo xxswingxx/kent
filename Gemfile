@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 1.2' # Build JSON APIs with ease. Read more: https://github.
 gem 'jquery-rails' # Use jquery as the JavaScript library
 gem 'kaminari'
 gem 'mini_magick'
+gem 'newrelic_rpm'
 gem 'pg' # Use sqlite3 as the database for Active Record
 gem 'rails', '4.0.4' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails-observers'
