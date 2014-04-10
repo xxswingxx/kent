@@ -1,4 +1,4 @@
-= simple_form_for @chapter, url: new_comic_chapter_path(comic_id: params[:comic_id]) do |f|
+= simple_form_for @chapter, url: comic_chapters_path(comic_id: params[:comic_id]) do |f|
   - if @chapter.errors.any?
     #error_explanation
       %h2= "#{pluralize(@chapter.errors.count, "error")} prohibited this chapter from being saved:"
@@ -6,14 +6,8 @@
         - @chapter.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :cover
-    = f.text_field :cover
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :issue
-    = f.text_field :issue
+  = f.input :file, as: :file, required: true
+  = f.input :title
+  = f.input :issue
   .actions
     = f.submit 'Save'

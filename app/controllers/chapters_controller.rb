@@ -24,17 +24,9 @@ class ChaptersController < ApplicationController
   # POST /chapters
   # POST /chapters.json
   def create
-    @chapter = Chapter.new(chapter_params)
-
-    respond_to do |format|
-      if @chapter.save
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @chapter }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @chapter.errors, status: :unprocessable_entity }
-      end
-    end
+    chapter = Chapter.new chapter_params
+    ProcessPagesJob.new.async.perform(current_user, chapter)
+    redirect_to comic_path(params[:comic_id]), notice: 'The chapter is being processed. Please wait a couple of minutes.'
   end
 
   # PATCH/PUT /chapters/1
@@ -69,6 +61,6 @@ class ChaptersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chapter_params
-      params.require(:chapter).permit(:cover, :title, :issue)
+      params.require(:chapter).permit(:title, :issue, :file)
     end
 end
