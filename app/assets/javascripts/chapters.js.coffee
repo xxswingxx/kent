@@ -3,8 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('#flipbook').turn
-    width: 700,
-    height: 900;
-    display: 'single',
-    autoCenter: true
+	if $('#flipbook').length > 0
+	  $('#flipbook').turn
+	    width: 700,
+	    height: 900;
+	    display: 'single',
+	    autoCenter: true
